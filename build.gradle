@@ -1,0 +1,99 @@
+allprojects {
+  ext {
+    versions = new Object() {
+      public final def
+        gradleAndroidPlugin = "1.5.0",
+
+        kotlin = '1.0.0-beta-3593',
+
+        sdkMin = 19,
+        sdkTarget = 23,
+        sdkCompile = 23,
+
+        buildTools = "23.0.2",
+        apt = "1.4",
+
+        leakCanary = "1.3.1",
+
+        timber = "4.1.0",
+
+        supportLibrary = "23.1.1",
+
+        butterKnife = "8.0.0-SNAPSHOT",
+        dagger = "2.0.2",
+        picasso = "2.5.2",
+        okHttp = "2.5.0",
+        retrofit = "2.0.0-beta2",
+        otto = "1.3.8",
+
+        hugo = "1.2.1",
+
+        anko = "0.7.3",
+
+        rxJava = "1.0.16",
+        rxAndroid = "1.0.1"
+    }
+  }
+}
+
+def applyAndroidApp(def project) {
+  project.apply plugin: 'com.android.application'
+  project.apply plugin: 'com.jakewharton.hugo'
+  applyCommonAndroidSettings(project)
+}
+
+def applyAndroidShared(def project) {
+  project.apply plugin: 'com.android.library'
+  applyCommonAndroidSettings(project)
+}
+
+private def applyCommonAndroidSettings(def project) {
+  project.android {
+    compileSdkVersion versions.sdkCompile
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+      minSdkVersion versions.sdkMin
+      targetSdkVersion versions.sdkTarget
+    }
+
+    sourceSets {
+      main.java.srcDirs += 'src/main/kotlin'
+    }
+  }
+}
+
+def kotlinize(def project) {
+  project.apply plugin: 'kotlin-android'
+  project.kapt {
+    generateStubs = true
+  }
+  project.dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+  }
+}
+
+subprojects {
+  repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+  }
+
+  buildscript {
+    repositories {
+      jcenter()
+      mavenCentral()
+    }
+
+    dependencies {
+      classpath "com.android.tools.build:gradle:$versions.gradleAndroidPlugin"
+      classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+      classpath "com.jakewharton.hugo:hugo-plugin:$versions.hugo"
+    }
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}

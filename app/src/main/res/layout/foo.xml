@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <include layout="@layout/toolbar"/>
+
+  <LinearLayout
+    android:id="@android:id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+    <TextView
+      android:id="@+id/speakingStringLabel"
+      style="@android:style/TextAppearance.Widget.TextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:labelFor="@+id/speakingString"
+      android:text="@string/speaking_string_label"/>
+
+    <EditText
+      android:id="@+id/speakingString"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"
+      android:hint="@string/speaking_string_hint"
+      tools:text="Call from %s"/>
+
+    <Space
+      android:layout_width="wrap_content"
+      android:layout_height="30dp"/>
+
+    <CheckBox
+      android:id="@+id/speakWhenNotInContacts"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/speak_when_not_in_contacts_label"/>
+
+    <Space
+      android:layout_width="wrap_content"
+      android:layout_height="30dp"/>
+
+    <TextView
+      android:id="@+id/speakingSpeedLabel"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:labelFor="@+id/speakingSpeed"/>
+
+    <SeekBar
+      android:id="@+id/speakingSpeed"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:max="9"
+      />
+  </LinearLayout>
+</LinearLayout>

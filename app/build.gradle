@@ -1,0 +1,50 @@
+applyAndroidApp(this)
+kotlinize(this)
+
+android {
+  defaultConfig {
+    applicationId "com.kevinmost.whoscalling"
+    versionCode 1
+    versionName "1.0"
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  testCompile 'junit:junit:4.12'
+
+  compile "com.google.dagger:dagger:$versions.dagger"
+  kapt "com.google.dagger:dagger-compiler:$versions.dagger"
+  compile 'javax.inject:javax.inject:1'
+  provided 'javax.annotation:jsr250-api:1.0'
+
+  compile "com.jakewharton:butterknife:$versions.butterKnife"
+  kapt "com.jakewharton:butterknife-compiler:$versions.butterKnife"
+
+  debugCompile "com.squareup.leakcanary:leakcanary-android:$versions.leakCanary"
+  releaseCompile "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakCanary"
+
+
+  compile(
+    "com.android.support:support-v4:$versions.supportLibrary",
+    "com.android.support:recyclerview-v7:$versions.supportLibrary",
+    "com.android.support:appcompat-v7:$versions.supportLibrary",
+    "com.android.support:cardview-v7:$versions.supportLibrary",
+
+    "com.jakewharton.timber:timber:$versions.timber",
+
+    "com.squareup.picasso:picasso:$versions.picasso",
+
+    "com.squareup.okhttp:okhttp:$versions.okHttp",
+    "com.squareup.retrofit:retrofit:$versions.retrofit",
+
+    "com.squareup:otto:$versions.otto",
+
+    "io.reactivex:rxjava:$versions.rxJava",
+    "io.reactivex:rxandroid:$versions.rxAndroid",
+
+    "org.jetbrains.anko:anko-sdk23:$versions.anko",
+    "org.jetbrains.anko:anko-support-v4:$versions.anko",
+    "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",
+  )
+}
