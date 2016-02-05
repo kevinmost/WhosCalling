@@ -1,6 +1,7 @@
 package com.kevinmost.whoscalling.dagger
 
 import com.kevinmost.whoscalling.App
+import com.kevinmost.whoscalling.BuildConfig
 import com.kevinmost.whoscalling.util.PostFromAnywhereBus
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
@@ -38,7 +39,7 @@ class AppModule(private val app: App) {
   fun picasso(app: App, okHttpClient: OkHttpClient): Picasso {
     return Picasso.Builder(app)
         .downloader(OkHttpDownloader(okHttpClient))
-        .indicatorsEnabled(app.isDebugBuildType())
+        .indicatorsEnabled(BuildConfig.DEBUG)
         .build()
   }
 }

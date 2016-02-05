@@ -8,11 +8,14 @@ import com.kevinmost.whoscalling.extension.getResourceValue
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private const val KEY_SPEAKING_STRING = "Speaking String"
-private const val KEY_SPEAK_IF_NOT_IN_CONTACTS = "Speak if not in contacts"
-
 @Singleton
 class WhosCallingPreferences @Inject internal constructor() {
+
+  companion object {
+    private val KEY_SPEAKING_STRING = "Speaking String"
+    private val KEY_SPEAK_IF_NOT_IN_CONTACTS = "Speak if not in contacts"
+    private val KEY_SPEAKING_SPEED = "Speaking Speed"
+  }
 
   private val preferences: SharedPreferences
 
@@ -33,6 +36,13 @@ class WhosCallingPreferences @Inject internal constructor() {
       editor = preferences.edit()
     }
     return editor!!
+  }
+
+  fun setSpeakingSpeed(speakingSpeed: Float,
+      commitAfter: Boolean = false)
+      : WhosCallingPreferences {
+    editor?.putFloat(KEY_SPEAKING_SPEED, speakingSpeed)
+    return maybeCommitAndReturn(commitAfter)
   }
 
   fun setSpeakingString(speakingString: String,

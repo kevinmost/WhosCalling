@@ -43,6 +43,8 @@ dependencies {
     "io.reactivex:rxjava:$versions.rxJava",
     "io.reactivex:rxandroid:$versions.rxAndroid",
 
+    "com.github.orhanobut:hawk:$versions.hawk",
+
     "org.jetbrains.anko:anko-sdk23:$versions.anko",
     "org.jetbrains.anko:anko-support-v4:$versions.anko",
     "org.jetbrains.anko:anko-appcompat-v7:$versions.anko",

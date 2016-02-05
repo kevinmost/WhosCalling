@@ -5,7 +5,7 @@
   <bool name="default_speak_when_not_in_contacts">false</bool>
 
   <string name="speaking_string_label">String to speak</string>
-  <string name="speaking_string_hint">Use \"%s\" where the caller's name should go</string>
+  <string name="speaking_string_hint">Use \"%s\" where the caller\'s name should go</string>
 
-  <string name="speak_when_not_in_contacts_label">Speak when caller isn't in contacts</string>
+  <string name="speak_when_not_in_contacts_label">Speak when caller isn\'t in contacts</string>
 </resources>
